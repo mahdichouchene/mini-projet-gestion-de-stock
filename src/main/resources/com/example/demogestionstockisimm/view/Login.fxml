@@ -96,7 +96,7 @@
 
     <bottom>
         <HBox style="-fx-background-color: #2E75B6; -fx-padding: 8;" alignment="CENTER">
-            <Label text="ISIMM 2025"
+            <Label text="ISIMM 2026"
                    style="-fx-text-fill: white; -fx-font-size: 11px;"/>
         </HBox>
     </bottom>
