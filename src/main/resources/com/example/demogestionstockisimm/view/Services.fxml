@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demogestionstockisimm.controller.ServiceController"
+            prefWidth="900" prefHeight="650"
+            style="-fx-background-color: #f4f6f9;">
+    <top>
+        <HBox style="-fx-background-color: #2E75B6; -fx-padding: 15;" alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Retour" onAction="#retourMenu"
+                    style="-fx-background-color: white; -fx-text-fill: #2E75B6; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+            <Label text="Gestion des Services"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="tfRecherche" promptText="Rechercher par nom..."
+                           prefWidth="300"/>
+                <Button text="Rechercher" onAction="#rechercher"
+                        style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <Button text="Afficher tout" onAction="#afficherTout"
+                        style="-fx-background-color: #888; -fx-text-fill: white; -fx-background-radius: 5;"/>
+            </HBox>
+            <TableView fx:id="tableServices" prefHeight="350">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
+                    <TableColumn fx:id="colNom" text="Nom du Service" prefWidth="400"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+            <TitledPane text="Formulaire Service" expanded="true">
+                <GridPane hgap="10" vgap="10" style="-fx-padding: 15;">
+                    <Label text="Nom du Service :" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <ComboBox fx:id="cbNom" prefWidth="250"
+                              GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button text="Ajouter" onAction="#ajouter"
+                                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="Modifier" onAction="#modifier"
+                                style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="Supprimer" onAction="#supprimer"
+                                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="Vider" onAction="#viderFormulaire"
+                                style="-fx-background-color: #888; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                    </HBox>
+                </GridPane>
+            </TitledPane>
+        </VBox>
+    </center>
+</BorderPane>

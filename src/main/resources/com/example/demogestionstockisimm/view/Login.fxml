@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demogestionstockisimm.controller.LoginController"
+            prefWidth="500" prefHeight="420"
+            style="-fx-background-color: #f4f6f9;">
+
+    <top>
+        <VBox style="-fx-background-color: #2E75B6; -fx-padding: 20;" alignment="CENTER">
+            <Label text="Gestion de Stock"
+                   style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <Label text="ISIMM - Monastir"
+                   style="-fx-text-fill: #cce0f5; -fx-font-size: 12px;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="0">
+
+            <!-- Onglets Connexion / Creer un compte -->
+            <HBox>
+                <Button fx:id="btnTabConnexion" text="Connexion"
+                        onAction="#afficherConnexion"
+                        prefWidth="250" prefHeight="40"
+                        style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-radius: 0;"/>
+                <Button fx:id="btnTabInscription" text="Creer un compte"
+                        onAction="#afficherInscription"
+                        prefWidth="250" prefHeight="40"
+                        style="-fx-background-color: #d0e4f7; -fx-text-fill: #2E75B6; -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-radius: 0;"/>
+            </HBox>
+
+            <!-- Panel Connexion -->
+            <VBox fx:id="panelConnexion" alignment="CENTER" spacing="15"
+                  style="-fx-padding: 25;">
+
+                <GridPane hgap="10" vgap="12" alignment="CENTER">
+                    <Label text="Login :" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="tfLogin" promptText="Votre login"
+                               prefWidth="220"
+                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Mot de passe :" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                           style="-fx-font-weight: bold;"/>
+                    <PasswordField fx:id="pfMotDePasse" promptText="Votre mot de passe"
+                                   prefWidth="220"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                </GridPane>
+
+                <Label fx:id="lblErreurConnexion" text=""
+                       style="-fx-text-fill: red; -fx-font-weight: bold;"/>
+
+                <Button text="Se connecter" onAction="#seConnecter"
+                        prefWidth="200" prefHeight="38"
+                        style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+            </VBox>
+
+            <!-- Panel Inscription (caché par défaut) -->
+            <VBox fx:id="panelInscription" alignment="CENTER" spacing="15"
+                  style="-fx-padding: 25;" visible="false" managed="false">
+
+                <GridPane hgap="10" vgap="12" alignment="CENTER">
+                    <Label text="Login :" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="tfNouveauLogin" promptText="Choisir un login"
+                               prefWidth="220"
+                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Mot de passe :" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                           style="-fx-font-weight: bold;"/>
+                    <PasswordField fx:id="pfNouveauMdp" promptText="Choisir un mot de passe"
+                                   prefWidth="220"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Confirmer :" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <PasswordField fx:id="pfConfirmerMdp" promptText="Confirmer le mot de passe"
+                                   prefWidth="220"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                </GridPane>
+
+                <Label fx:id="lblErreurInscription" text=""
+                       style="-fx-font-weight: bold;"/>
+
+                <Button text="Creer le compte" onAction="#creerCompte"
+                        prefWidth="200" prefHeight="38"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox style="-fx-background-color: #2E75B6; -fx-padding: 8;" alignment="CENTER">
+            <Label text="ISIMM 2025"
+                   style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

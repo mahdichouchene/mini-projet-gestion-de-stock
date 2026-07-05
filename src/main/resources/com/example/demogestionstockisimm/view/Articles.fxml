@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demogestionstockisimm.controller.ArticleController"
+            prefWidth="900" prefHeight="650"
+            style="-fx-background-color: #f4f6f9;">
+    <top>
+        <HBox style="-fx-background-color: #2E75B6; -fx-padding: 15;" alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Retour" onAction="#retourMenu"
+                    style="-fx-background-color: white; -fx-text-fill: #2E75B6; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+            <Label text="Gestion des Articles"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="tfRecherche" promptText="Rechercher par référence ou nom..."
+                           prefWidth="300"/>
+                <Button text="Rechercher" onAction="#rechercher"
+                        style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <Button text="Afficher tout" onAction="#afficherTout"
+                        style="-fx-background-color: #888; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <Label fx:id="lblAlerte" text=""
+                       style="-fx-text-fill: red; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <TableView fx:id="tableArticles" prefHeight="230">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+                    <TableColumn fx:id="colReference" text="Référence" prefWidth="90"/>
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="150"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="110"/>
+                    <TableColumn fx:id="colDatePeremption" text="Date Péremption" prefWidth="130"/>
+                    <TableColumn fx:id="colStockMinimal" text="Stock Min" prefWidth="90"/>
+                    <TableColumn fx:id="colCritique" text="Critique" prefWidth="70"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+            <TitledPane text="Formulaire Article" expanded="true">
+                <GridPane hgap="10" vgap="10" style="-fx-padding: 15;">
+
+                    <Label text="Référence :" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="tfReference" promptText="Ex: 1001"
+                               prefWidth="200"
+                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="tfNom" promptText="Ex: Papier A4"
+                               prefWidth="200"
+                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Type :" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <ComboBox fx:id="cbType" prefWidth="200"
+                              GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="Critique :" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <HBox spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <RadioButton fx:id="rbOui" text="Oui"/>
+                        <RadioButton fx:id="rbNon" text="Non" selected="true"/>
+                    </HBox>
+
+                    <Label text="Date péremption :" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <DatePicker fx:id="dpDatePeremption" prefWidth="200"
+                                GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                    <Label text="Stock minimal :" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <TextField fx:id="tfStockMinimal" promptText="Ex: 10"
+                               prefWidth="200"
+                               GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Button text="Ajouter" onAction="#ajouter"
+                                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="Modifier" onAction="#modifier"
+                                style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="Supprimer" onAction="#supprimer"
+                                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Button text="Vider" onAction="#viderFormulaire"
+                                style="-fx-background-color: #888; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                    </HBox>
+
+                </GridPane>
+            </TitledPane>
+
+        </VBox>
+    </center>
+</BorderPane>

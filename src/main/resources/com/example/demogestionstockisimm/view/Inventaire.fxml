@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demogestionstockisimm.controller.InventaireController"
+            prefWidth="900" prefHeight="650"
+            style="-fx-background-color: #f4f6f9;">
+    <top>
+        <HBox style="-fx-background-color: #2E75B6; -fx-padding: 15;" alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Retour" onAction="#retourMenu"
+                    style="-fx-background-color: white; -fx-text-fill: #2E75B6; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+            <Label text="Inventaire du Stock"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Filtrer par local :" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="cbLocal" prefWidth="180"/>
+                <Button text="Filtrer" onAction="#filtrerParLocal"
+                        style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <Button text="Afficher tout" onAction="#afficherTout"
+                        style="-fx-background-color: #888; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <!-- fx:id="btnBilan" permet au Controller de le cacher pour les non-magasiniers -->
+                <Button fx:id="btnBilan" text="Generer bilan annuel" onAction="#genererBilan"
+                        style="-fx-background-color: #17a589; -fx-text-fill: white; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <TableView fx:id="tableStocks" prefHeight="420">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+                    <TableColumn fx:id="colArticle" text="Ref" prefWidth="60"/>
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="130"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                    <TableColumn fx:id="colLocal" text="Local" prefWidth="120"/>
+                    <TableColumn fx:id="colQuantite" text="Quantite" prefWidth="80"/>
+                    <TableColumn fx:id="colStockMin" text="Stock Min" prefWidth="80"/>
+                    <TableColumn fx:id="colAlerte" text="Alerte" prefWidth="70"/>
+                    <TableColumn fx:id="colJours" text="Jours restants" prefWidth="110"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <Label fx:id="lblTotalArticles" style="-fx-font-weight: bold; -fx-text-fill: #2E75B6;"/>
+                <Label fx:id="lblTotalQuantite" style="-fx-font-weight: bold; -fx-text-fill: #2E75B6;"/>
+                <Label fx:id="lblAlertes" style="-fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

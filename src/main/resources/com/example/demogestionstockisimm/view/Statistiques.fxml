@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demogestionstockisimm.controller.StatistiquesController"
+            prefWidth="900" prefHeight="650"
+            style="-fx-background-color: #f4f6f9;">
+    <top>
+        <HBox style="-fx-background-color: #2E75B6; -fx-padding: 15;"
+              alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Retour" onAction="#retourMenu"
+                    style="-fx-background-color: white; -fx-text-fill: #2E75B6;
+                           -fx-font-weight: bold; -fx-background-radius: 5;"/>
+            <Label text="Statistiques de Consommation"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+
+            <TitledPane text="Produit le plus consommé (global)" expanded="true">
+                <VBox spacing="10" style="-fx-padding: 15;">
+                    <Button text="Calculer" onAction="#calculerPlusConsomme"
+                            style="-fx-background-color: #2E75B6; -fx-text-fill: white;
+                                   -fx-background-radius: 5;"/>
+                    <Label fx:id="lblPlusConsomme"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="Produit le plus consommé par service" expanded="true">
+                <VBox spacing="10" style="-fx-padding: 15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Service :"/>
+                        <ComboBox fx:id="cbService" prefWidth="200"/>
+                        <Button text="Calculer" onAction="#calculerParService"
+                                style="-fx-background-color: #2E75B6; -fx-text-fill: white;
+                                       -fx-background-radius: 5;"/>
+                    </HBox>
+                    <Label fx:id="lblParService"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="Consommation par article" expanded="true">
+                <VBox spacing="10" style="-fx-padding: 15;">
+                    <Button text="Afficher tout" onAction="#afficherConsommation"
+                            style="-fx-background-color: #17a589; -fx-text-fill: white;
+                                   -fx-background-radius: 5;"/>
+                    <TableView fx:id="tableConsommation" prefHeight="200">
+                        <columns>
+                            <TableColumn fx:id="colReference" text="Référence" prefWidth="150"/>
+                            <TableColumn fx:id="colType" text="Type" prefWidth="150"/>
+                            <TableColumn fx:id="colTotal" text="Total consommé" prefWidth="200"/>
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </VBox>
+            </TitledPane>
+
+        </VBox>
+    </center>
+</BorderPane>
